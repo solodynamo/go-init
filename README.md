@@ -14,6 +14,7 @@
 - Extracts the binary and runs it,
 - Setups $GOROOT and $GOPATH by entering required path variables into your zsh or bash shell automatically.
 - Removes the downloaded .gz file and cleans things up.
+- Remove past installations using the script.
 
 It is written with an aim to fasten golang setup. 
 
@@ -35,10 +36,14 @@ $ git clone git@github.com:solodynamo/go-init.git
 ```
 
 ## Usage
+- install go
 ```html
 ./goinit.sh
 ```
-
+- removes go
+```html
+./goinit.sh -goaway
+```
 ## Example
 <h3 align="center">
     <br>
