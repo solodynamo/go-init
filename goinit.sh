@@ -89,7 +89,7 @@ echo "Setting GOPATH GOROOT......"
     echo '# GoLangConfig '
     echo 'export GOROOT=$HOME/.go'
     echo 'export PATH=$PATH:$GOROOT/bin'
-    echo 'export GOPATH=$HOME/go'
+    echo 'export GOPATH=$HOME/goworkspace'
     echo 'export PATH=$PATH:$GOPATH/bin'
 } >> "$HOME/.${shell_profile}"
 
