@@ -19,7 +19,7 @@ reset=`tput sgr0`
             shell_profile="bashrc"
         fi
 if [ $# -eq 0 ]; then
-     options=("1.8" "1.9.1" "1.9.2" "1.9.3" "1.9.4" "1.9.5" "1.9.6" "1.9.7" "1.10.1" "1.10.2" "1.10.3")
+     options=("1.8" "1.9.1" "1.9.2" "1.9.3" "1.9.4" "1.9.5" "1.9.6" "1.9.7" "1.10.1" "1.10.2" "1.10.3" "1.11.8" "1.12.3")
 
         #allow user to select whichever ver they wish
         echo "Select one of the golang's version from below.."
@@ -49,8 +49,8 @@ if [ $# -eq 0 ]; then
         fi
 
         #checking if install dirs aren't pre-occupied
-        if [ -d "$HOME/.go" ] || [ -d "$HOME/goworkspace" ]; then
-            echo "The 'goworkspace' or '.go' directories already exist. Exiting."
+        if [ -d "$HOME/go" ] || [ -d "$HOME/goworkspace" ]; then
+            echo "The 'goworkspace' or 'go' directories already exist. Exiting."
             exit 1
         fi
 
@@ -60,10 +60,10 @@ if [ $# -eq 0 ]; then
             echo "$HOME/goworkspace already exists but is not a directory" 1>&2
         fi
 
-        if [[ ! -e $HOME/.go ]]; then
-            mkdir $HOME/.go
+        if [[ ! -e $HOME/go ]]; then
+            mkdir $HOME/go
         elif [[ ! -d $dir ]]; then
-            echo "$HOME/.go already exists but is not a directory" 1>&2
+            echo "$HOME/go already exists but is not a directory" 1>&2
         fi
 
         echo "Downloading $download_file ...."
@@ -77,13 +77,13 @@ if [ $# -eq 0 ]; then
 
         echo "Extracting File..."
         tar -C "$HOME" -xzf /tmp/go.tar.gz
-        mv "$HOME/goworkspace" "$HOME/.go"
+        mv "$HOME/goworkspace" "$HOME/go"
         touch "$HOME/.${shell_profile}"
 
         echo -e "\nSetting GOPATH GOROOT......"
         {
             echo '# GoLangConfig '
-            echo 'export GOROOT=$HOME/.go'
+            echo 'export GOROOT=$HOME/go'
             echo 'export PATH=$PATH:$GOROOT/bin'
             echo 'export GOPATH=$HOME/goworkspace'
             echo 'export PATH=$PATH:$GOPATH/bin'
@@ -97,7 +97,7 @@ if [ $# -eq 0 ]; then
 else 
          #in mac systems sed requires extra '' 
         if [ "$arch" = "darwin" ]; then
-            rm -rf "$HOME/.go/"
+            rm -rf "$HOME/go/"
             rm -rf "$HOME/goworkspace/"
             sed -i '' '/# GoLangConfig/d' "$HOME/.${shell_profile}"
             sed -i '' '/export GOROOT/d' "$HOME/.${shell_profile}"
@@ -106,7 +106,7 @@ else
             sed -i '' '/:$GOPATH/d' "$HOME/.${shell_profile}"
             echo "Go removed."
         else
-            rm -rf "$HOME/.go/"
+            rm -rf "$HOME/go/"
             rm -rf "$HOME/goworkspace/"
             sed -i '/# GoLangConfig/d' "$HOME/.${shell_profile}"
             sed -i '/export GOROOT/d' "$HOME/.${shell_profile}"

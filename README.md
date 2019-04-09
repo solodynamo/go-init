@@ -28,11 +28,13 @@ It is written with an aim to fasten golang setup.
 ```sh
 # wget or curl the script
 $ wget https://raw.githubusercontent.com/solodynamo/go-init/master/goinit.sh
-$ curl https://raw.githubusercontent.com/solodynamo/go-init/master/goinit.sh
+$ curl https://raw.githubusercontent.com/solodynamo/go-init/master/goinit.sh > goinit.sh
 
 # Alternatively you can clone the repo and use it.
 $ git clone git@github.com:solodynamo/go-init.git
 
+# Do this
+$ sudo chmod +x goinit.sh
 ```
 
 ## Usage
@@ -56,7 +58,7 @@ $ git clone git@github.com:solodynamo/go-init.git
 ## Info
 Path set for $GOROOT and $GOPATH 
 ```html
-export GOROOT=$HOME/.go
+export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/goworkspace
 export PATH=$PATH:$GOPATH/bin
@@ -65,6 +67,10 @@ export PATH=$PATH:$GOPATH/bin
 ## Contribute
 
 Always do :)
+
+## Quirk
+
+If you see a halt after running the script, type `exit` and enter and keep doing this until things are done :)
 
 ## License
 
